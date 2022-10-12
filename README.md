@@ -27,7 +27,7 @@
  - **IsEmpty()** - Return true, if tree is empty.
  - **IsContain()** - Return true, if tree is containing the node.
  - **Compare()** - Comparing trees(this is a helper method).
- ### ...
+ #### ...
 ### Operators
  - **Copy operator assignment =**
  - **Move operator assignment =**
