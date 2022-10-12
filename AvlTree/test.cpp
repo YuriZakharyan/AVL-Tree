@@ -1,6 +1,7 @@
 #include <iostream>
 #include "AVLTree.hpp"
 int main() {
+	/*
 	AVLTree<int> avl;	//Create AVL tree which nodes values is intager
 	avl.insert(14);		//Add new node
 	avl.insert(17);
@@ -15,6 +16,7 @@ int main() {
 	avl.insert(19);
 	avl.insert(16);
 	avl.insert(20);
+	*/
 	/*
 								  14
 							 /    	    \
@@ -25,9 +27,12 @@ int main() {
 				  4     8      13   16        20  60
 
 	*/
+	/*
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
-	//avl.clear();													
+	*/
+	//avl.clear();
+	/*
 	std::cout << "\nAVL tree (preorder traversal): ";
 	avl.printPreorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";
@@ -54,7 +59,9 @@ int main() {
 	std::cout << "\n\nLevelOrder Traversal(Iterative): \n";
 	avl.printLevelorderIterative();
 	std::cout << "\n";
+	*/
 
+	/*
 	AVLTree<char> t1;
 	AVLTree<char> t2;
 	if (t1 == t2) {										//== operator, whan trees is empty
@@ -69,7 +76,8 @@ int main() {
 	else {
 		std::cout << "\nt1 == t2";
 	}
-
+	*/
+	/*
 	t1.insert('H');
 	t1.insert('A');
 	t2.insert('B');
@@ -92,11 +100,12 @@ int main() {
 	std::cout << "k -> " << k;											// k ->  4 7 8 11 12 13 14 16 17 19 20 53 60 1000
 	std::cout << "\n--------------------------------\n";
 	AVLTree<int>n;
-	//AVLTree<int>o = avl + k;
+	AVLTree<int>o;
+	//o = avl + k;
 	//std::cout << o;
 	//std :: cout << "\n--------------------------------\n";
 
-	//AVLTree<int> ee{ 4, 5 };								//only can declare tree
+	//AVLTree<int> ee{ 4, 5 };								//can declare tree, using initializer_list.
 	//std :: cout << ee;									//error(...)
-
+	*/
 }

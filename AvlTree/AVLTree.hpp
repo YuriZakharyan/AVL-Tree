@@ -1,19 +1,21 @@
-#pragma once
 #include "AVLTree.h"
 #include <iostream>
 #include <queue>
 
 template <class T>
-AVLNode<T> ::AVLNode(const T value) :
-	_data(value),
-	_left(nullptr),
-	_right(nullptr) {}
+AVLNode<T> ::AVLNode(const T value) : _data(value),	_left(nullptr),	_right(nullptr) {}
 template <class T>
 AVLNode<T>::~AVLNode() {}
 template <class T>
-AVLTree<T>::AVLTree() :
-	count(0),
-	root(nullptr) {}
+AVLTree<T>::AVLTree() :	count(0), root(nullptr) {}
+template<class T>
+AVLTree<T>::AVLTree(AVLNode<T>* newRoot) {
+	root = newRoot;
+}
+template <class T>
+AVLTree<T>::~AVLTree() {
+	clear();
+}
 template <class T>
 AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 {
@@ -22,7 +24,7 @@ AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 }
 template <class T>
 AVLTree<T>::AVLTree(std::initializer_list<T> newList) :root(nullptr) {	//not fully implemented
-	for (auto i = newList.begin; i < newList.end; i++) {
+	for (auto i = newList.begin; i != newList.end; i++) {
 		insert(i, root);
 		ListHelper(root);
 	}
@@ -33,15 +35,6 @@ void AVLTree<T> ::ListHelper(AVLNode<T>*&) {
 		ListHelper(root->_left);
 		ListHelper(root->_right);
 	}
-}
-
-template<class T>
-AVLTree<T>::AVLTree(AVLNode<T>* newRoot) {
-	root = newRoot;
-}
-template <class T>
-AVLTree<T>::~AVLTree() {
-	clear();
 }
 template <class T>
 AVLNode<T>* AVLTree<T>::left_Rotate(AVLNode<T>*& node) {
@@ -79,7 +72,7 @@ int AVLTree<T>::returnMax(T a, T b) const {
 	return (a > b) ? a : b;
 }
 template <class T>
-int AVLTree<T>::getHeight()const {
+int AVLTree<T>::getHeight() const {
 	return height(root);
 }
 template <class T>
@@ -172,7 +165,8 @@ T AVLTree<T>::findMin() const {
 		return findMin(root);
 	}
 	else {
-		return NULL;
+		std :: cout << "Your Tree is Empty\n";
+		return -1;
 	}
 }
 template <class T>
@@ -188,7 +182,8 @@ T AVLTree<T>::findMax() const {
 		return findMax(root);
 	}
 	else {
-		return NULL;
+		std :: cout << "Tree is empty\n";
+		return -1;
 	}
 }
 template <class T>
@@ -209,7 +204,7 @@ bool AVLTree<T>::isEmpty() const {
 	return count == 0;
 }
 template <class T>
-int AVLTree<T>::getBalance()const {
+int AVLTree<T>::getBalance() const {
 	if (root->_left == nullptr && root->_right == nullptr)
 		return 0;
 	if (root->_left == nullptr)
@@ -255,7 +250,7 @@ void AVLTree<T>::clear() {
 	root = nullptr;
 }
 template <class T>
-void AVLTree<T>::printPreorder()const {
+void AVLTree<T>::printPreorder() const {
 	if (root) {
 		printPreorder(root);
 	}
@@ -274,7 +269,7 @@ AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
 	return t1;
 }
 template <class T>
-void AVLTree<T>::printPreorder(AVLNode<T>* node)const {
+void AVLTree<T>::printPreorder(AVLNode<T>* node) const {
 	std::cout << node->_data << " ";
 	if (node->_left) {
 		printPreorder(node->_left);
@@ -284,33 +279,33 @@ void AVLTree<T>::printPreorder(AVLNode<T>* node)const {
 	}
 }
 template <class T>
-void AVLTree<T>::printInorder()const {
+void AVLTree<T>::printInorder() const {
 	if (root) {
 		printInorder(root);
 	}
 }
 template <class T>
-void AVLTree<T>::printInorder(AVLNode<T>* node)const {
+void AVLTree<T>::printInorder(AVLNode<T>* node) const {
 	if (node == nullptr) return;
 	printInorder(node->_left);
 	std::cout << node->_data << " ";
 	printInorder(node->_right);
 }
 template <class T>
-void AVLTree<T>::printPostorder()const {
+void AVLTree<T>::printPostorder() const {
 	if (root) {
 		printPostorder(root);
 	}
 }
 template <class T>
-void AVLTree<T>::printPostorder(AVLNode<T>* node)const {
+void AVLTree<T>::printPostorder(AVLNode<T>* node) const {
 	if (node == nullptr) return;
 	printPostorder(node->_left);
 	printPostorder(node->_right);
 	std::cout << node->_data << " ";
 }
 template <class T>
-void AVLTree<T>::printLevelorderIterative()const {
+void AVLTree<T>::printLevelorderIterative() const {
 	if (root == nullptr) return;
 	std::queue<AVLNode<T>*> q;
 	AVLNode<T>* current;
@@ -417,7 +412,6 @@ AVLTree<T> AVLTree<T>::operator+(const AVLTree<T>& tree) {
 template <class T>
 AVLTree<T>& AVLTree<T>::operator+=(const AVLTree<T>& tree) {
 	if (*this == tree) {
-		//AVLTree<T> temp = tree; 
 		insertHelper(tree.root);
 	}
 	else {

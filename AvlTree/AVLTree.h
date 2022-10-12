@@ -1,6 +1,4 @@
-#pragma once
 #include <iostream>
-
 template <class T>
 class AVLNode {
 public:
@@ -18,7 +16,6 @@ public:
 	AVLTree(std::initializer_list<T>);
 	AVLTree(AVLNode<T>*);
 	~AVLTree();
-	void ListHelper(AVLNode<T>*&);
 	void insert(const T);
 	void clear();
 	int getHeight()const;
@@ -70,6 +67,7 @@ private:
 	void insertHelper(AVLNode<T>*);
 	bool contain(const T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;
+	void ListHelper(AVLNode<T>*&);
 	T findMin(const AVLNode<T>*)const;
 	T findMax(const AVLNode<T>*)const;
 };
