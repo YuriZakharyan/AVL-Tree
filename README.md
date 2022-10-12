@@ -4,29 +4,29 @@
 ### In this project you can see:
 
 ### **Methods**
- - **Insert()** - insert element in tree (after that balansing the tree). 
- - **Erase()** - insert element in tree (after that balansing the tree).
+ - **Insert()** - Insert element in tree (after that balansing the tree). 
+ - **Erase()** - Insert element in tree (after that balansing the tree).
  - **RightRotate()**
  - **LeftRotate()** 
  - **RightLeftRotate()**
  - **LeftRightRotate()**
- - **Clear()** - delete tree.
- - **GetBalance()** - calculate balance factor //   -1 <= (left.height - right.height) <= 1
- - **GetHeight()** - return height of tree.
- - **GetNumberOfNodes()** - return number of nodes in tree.
- - **InorderTraversal()** - left->root->right
- - **PreorderTraversal()** - root->left->right
- - **PostorderTraversal()** - left->right->root
- - **LevelOrderTraversal()** - from top to down.
- - **LevelOrderTraversalIterative()** - this is iterative solution, where I use Queue data structure.
- - **GetRootData()** - return value of root.
+ - **Clear()** - Delete tree.
+ - **GetBalance()** - Dalculate balance factor //   -1 <= (left.height - right.height) <= 1
+ - **GetHeight()** - Return height of tree.
+ - **GetNumberOfNodes()** - Return number of nodes in tree.
+ - **InorderTraversal()** - Left->Root->Right
+ - **PreorderTraversal()** - Root->Left->Right
+ - **PostorderTraversal()** - Left->Right->Root
+ - **LevelOrderTraversal()** - From top to down.
+ - **LevelOrderTraversalIterative()** - This is iterative solution, where I use Queue data structure.
+ - **GetRootData()** - Return value of root.
  - **Merge()** - Merging two AVL tree.
- - **Find()** - find node in tree.
- - **FindMin()** - return node, which value is minimum.
- - **FindMax()** - return node, which value is minimum.
- - **IsEmpty()** - return true, if tree is empty.
- - **IsContain()** - return true, if tree is containing the node.
- - **Compare()** - Compareing trees(this is a helper method).
+ - **Find()** - Find node in tree.
+ - **FindMin()** - Return node, which value is minimum.
+ - **FindMax()** - Return node, which value is minimum.
+ - **IsEmpty()** - Return true, if tree is empty.
+ - **IsContain()** - Return true, if tree is containing the node.
+ - **Compare()** - Comparing trees(this is a helper method).
  ### ...
 ### Operators
  - **Copy operator assignment =**
