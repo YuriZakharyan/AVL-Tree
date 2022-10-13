@@ -108,4 +108,17 @@ int main() {
 	//AVLTree<int> ee{ 4, 5 };								//can declare tree, using initializer_list.
 	//std :: cout << ee;									//error(...)
 	*/
+
+    /*
+	AVLTree<char>r,r1;
+	r.insert('a');
+	r.insert('b');
+	r.insert('v');
+	r1.insert('5');
+	r1.insert('6');
+	r1.printInorder();			//r1-> 5,6
+	std :: cout << "\n";		
+	r1 += r;					
+	r1.printInorder();			//r1->5,6,a,b,v
+	*/
 }
