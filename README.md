@@ -18,7 +18,7 @@
  - **PreorderTraversal()** - Root->Left->Right
  - **PostorderTraversal()** - Left->Right->Root
  - **LevelOrderTraversal()** - From top to down.
- - **LevelOrderTraversalIterative()** - This is iterative solution, where I use Queue data structure.
+ - **LevelOrderTraversalIterative()** - This is iterative solution, where I used Queue data structure.
  - **GetRootData()** - Return value of root.
  - **Merge()** - Merging two AVL tree.
  - **Find()** - Find node in tree.
