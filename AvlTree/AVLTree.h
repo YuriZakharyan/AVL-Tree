@@ -41,7 +41,7 @@ public:
 	bool operator!=(const AVLTree<T>&)const;
 	AVLTree<T>& operator=(const AVLTree<T>&);
 	AVLTree<T>& operator=(AVLTree<T>&&);
-	AVLTree operator+(const AVLTree&);
+	AVLTree<T> operator+(const AVLTree&);
 	AVLTree& operator+=(const AVLTree&);
 	friend std::ostream& operator<<(std::ostream& stream, const AVLTree<T>& tree)
 	{

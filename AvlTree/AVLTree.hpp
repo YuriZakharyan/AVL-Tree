@@ -412,7 +412,7 @@ AVLTree<T>& AVLTree<T>::operator=(AVLTree<T>&& tree) {
 }
 template <class T>
 AVLTree<T> AVLTree<T>::operator+(const AVLTree<T>& tree) {
-		AVLTree<T> t = root;	//this
+		AVLTree<T> t = root;	//*this
 		t += tree;
 		return t;
 }
@@ -434,4 +434,3 @@ void AVLTree<T>::insertHelper(AVLNode<T>* node) {
 		insertHelper(node->_right);
 	}
 }
-
