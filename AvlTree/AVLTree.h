@@ -46,7 +46,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, const AVLTree<T>& tree)
 	{
 		tree.printInorder();
-		return stream;
+		return stream; 
 	};
 private:
 	unsigned count;
