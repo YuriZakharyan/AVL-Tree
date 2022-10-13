@@ -77,22 +77,22 @@ int AVLTree<T>::getHeight() const {
 }
 template <class T>
 AVLNode<T>* AVLTree<T>::insert(const T value, AVLNode<T>* node) {
-	if (node == nullptr) {
+	if (node == nullptr) {						//find place to add a new node.
 		node = new AVLNode<T>(value);
 		count++;
 	}
-	else if (value < node->_data) {
+	else if (value < node->_data) {				//Go to the left Subtree
 		node->_left = insert(value, node->_left);
-		if (height(node->_left) - height(node->_right) == 2) {
+		if (height(node->_left) - height(node->_right) == 2) {		//Balancing
 			if (value < node->_left->_data)
 				node = left_Rotate(node);
 			else
 				node = leftright_Rotate(node);
 		}
 	}
-	else if (node->_data < value) {
+	else if (node->_data < value) {				//Go to the right Subtree
 		node->_right = insert(value, node->_right);
-		if (height(node->_left) - height(node->_right) == -2) {
+		if (height(node->_left) - height(node->_right) == -2) {		//Balancing
 			if (node->_right->_data < value)
 				node = right_Rotate(node);
 			else
@@ -108,7 +108,7 @@ void AVLTree<T>::insert(const T value) {
 }
 template <class T>
 AVLNode<T>* AVLTree<T>::erase(const T value, AVLNode<T>* node) {
-	if (node == nullptr) {
+	if (node == nullptr) {			//If Tree is empty, return.
 		return node;
 	}
 	if (value < node->_data) {
