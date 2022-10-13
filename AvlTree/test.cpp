@@ -115,12 +115,12 @@ int main() {
 	r1 += r;					
 	r1.printInorder();													//r1->5,6,a,b,v
 	*/
-	/*
+	
 	AVLTree<int> a, b;
 	a.insert(5);
 	a.insert(6);
 	a.insert(1);
-	b.insert(3);
+	//b.insert(3);
 	//AVLTree<int>c;
 	//c = a + b;											
 	//c.printInorder();
@@ -128,5 +128,5 @@ int main() {
 	k.printInorder();
 	std::cout << "\n";
 	k.printLevelorderIterative();
-	*/
+	
 }
