@@ -34,7 +34,8 @@ public:
 	T findMin()const;
 	T findMax()const;
 	size_t getNumOfNodes()const;
-	AVLTree<T> mergeTrees(AVLTree<T>&, AVLTree<T>&);
+	//AVLTree<T> mergeTrees(AVLTree<T>&, AVLTree<T>&);
+	AVLTree<T> merging(AVLTree<T>&, AVLTree<T>&);
 public:
 	bool operator==(const AVLTree<T>&)const;
 	bool operator!=(const AVLTree<T>&)const;
@@ -63,7 +64,7 @@ private:
 	void printInorder(AVLNode<T>*)const;
 	void printPostorder(AVLNode<T>*)const;
 	void printLevelOrder(AVLNode<T>*, int)const;
-	void mergeHelper(AVLNode<T>*&);
+	//void mergeHelper(AVLNode<T>*&);
 	void insertHelper(AVLNode<T>*);
 	bool contain(const T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;

@@ -255,18 +255,25 @@ void AVLTree<T>::printPreorder() const {
 		printPreorder(root);
 	}
 }
+///template <class T>
+///void AVLTree<T>::mergeHelper(AVLNode<T>*& node) {
+///	if (node != nullptr) {
+///		mergeHelper(node->_left);
+///		insert(node->_data, root);
+///		mergeHelper(node->_right);
+///	}
+///}
+///template <class T>
+///AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
+///	t1.mergeHelper(t2.root);
+///	return t1;
+///}
+
 template <class T>
-void AVLTree<T>::mergeHelper(AVLNode<T>*& node) {
-	if (node != nullptr) {
-		mergeHelper(node->_left);
-		insert(node->_data, root);
-		mergeHelper(node->_right);
-	}
-}
-template <class T>
-AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
-	t1.mergeHelper(t2.root);
-	return t1;
+AVLTree<T> AVLTree<T> ::merging(AVLTree<T>& t1, AVLTree<T>& t2) {
+	AVLTree<T> t;
+	t = t1 + t2;
+	return t;
 }
 template <class T>
 void AVLTree<T>::printPreorder(AVLNode<T>* node) const {
@@ -405,9 +412,9 @@ AVLTree<T>& AVLTree<T>::operator=(AVLTree<T>&& tree) {
 }
 template <class T>
 AVLTree<T> AVLTree<T>::operator+(const AVLTree<T>& tree) {
-	AVLTree<T> t = *this;
-	t += tree;
-	return t;
+		AVLTree<T> t = root;	//this
+		t += tree;
+		return t;
 }
 template <class T>
 AVLTree<T>& AVLTree<T>::operator+=(const AVLTree<T>& tree) {
@@ -427,3 +434,4 @@ void AVLTree<T>::insertHelper(AVLNode<T>* node) {
 		insertHelper(node->_right);
 	}
 }
+
