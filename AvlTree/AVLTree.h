@@ -35,7 +35,7 @@ public:
 	T findMax()const;
 	size_t getNumOfNodes()const;
 	//AVLTree<T> mergeTrees(AVLTree<T>&, AVLTree<T>&);
-	AVLTree<T> merging(AVLTree<T>&, AVLTree<T>&);
+	AVLTree<T> merge(AVLTree<T>&, AVLTree<T>&);
 public:
 	bool operator==(const AVLTree<T>&)const;
 	bool operator!=(const AVLTree<T>&)const;

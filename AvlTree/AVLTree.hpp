@@ -1,7 +1,6 @@
 #include "AVLTree.h"
 #include <iostream>
 #include <queue>
-
 template <class T>
 AVLNode<T> ::AVLNode(const T value) : _data(value),	_left(nullptr),	_right(nullptr) {}
 template <class T>
@@ -9,9 +8,7 @@ AVLNode<T>::~AVLNode() {}
 template <class T>
 AVLTree<T>::AVLTree() :	count(0), root(nullptr) {}
 template<class T>
-AVLTree<T>::AVLTree(AVLNode<T>* newRoot) {
-	root = newRoot;
-}
+AVLTree<T>::AVLTree(AVLNode<T>* newRoot) : root(newRoot) {}
 template <class T>
 AVLTree<T>::~AVLTree() {
 	clear();
@@ -65,7 +62,7 @@ AVLNode<T>* AVLTree<T>::rightleft_Rotate(AVLNode<T>*& node) {
 template <class T>
 int AVLTree<T>::height(AVLNode<T>* node) const {
 	if (!node)	return 0;
-	return 1 + returnMax(height(node->_left), height(node->_right));
+	return returnMax(height(node->_left), height(node->_right)) + 1;
 }
 template <class T>
 int AVLTree<T>::returnMax(T a, T b) const {
@@ -187,7 +184,7 @@ T AVLTree<T>::findMax() const {
 	}
 }
 template <class T>
-size_t AVLTree<T>::getNumOfNodes()const {
+size_t AVLTree<T>::getNumOfNodes() const {
 	return count;
 }
 template <class T>
@@ -254,26 +251,6 @@ void AVLTree<T>::printPreorder() const {
 	if (root) {
 		printPreorder(root);
 	}
-}
-///template <class T>
-///void AVLTree<T>::mergeHelper(AVLNode<T>*& node) {
-///	if (node != nullptr) {
-///		mergeHelper(node->_left);
-///		insert(node->_data, root);
-///		mergeHelper(node->_right);
-///	}
-///}
-///template <class T>
-///AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
-///	t1.mergeHelper(t2.root);
-///	return t1;
-///}
-
-template <class T>
-AVLTree<T> AVLTree<T> ::merging(AVLTree<T>& t1, AVLTree<T>& t2) {
-	AVLTree<T> t;
-	t = t1 + t2;
-	return t;
 }
 template <class T>
 void AVLTree<T>::printPreorder(AVLNode<T>* node) const {
@@ -354,6 +331,25 @@ void AVLTree<T>::printLevelOrder(AVLNode<T>* root, int level) const {
 		printLevelOrder(root->_left, level - 1);
 		printLevelOrder(root->_right, level - 1);
 	}
+}
+///template <class T>
+///void AVLTree<T>::mergeHelper(AVLNode<T>*& node) {
+///	if (node != nullptr) {
+///		mergeHelper(node->_left);
+///		insert(node->_data, root);
+///		mergeHelper(node->_right);
+///	}
+///}
+///template <class T>
+///AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
+///	t1.mergeHelper(t2.root);
+///	return t1;
+///}
+template <class T>
+AVLTree<T> AVLTree<T> ::merge(AVLTree<T>& t1, AVLTree<T>& t2) {
+	AVLTree<T> t;
+	t = t1 + t2;
+	return t;
 }
 template <class T>
 bool AVLTree<T>::compare(AVLNode<T>* root1, AVLNode<T>* root2) const {

@@ -30,9 +30,7 @@ int main() {
 	/*
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
-	*/
 	//avl.clear();
-	/*
 	std::cout << "\nAVL tree (preorder traversal): ";
 	avl.printPreorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";
@@ -60,17 +58,16 @@ int main() {
 	avl.printLevelorderIterative();
 	std::cout << "\n";
 	*/
-
 	/*
 	AVLTree<char> t1;
 	AVLTree<char> t2;
-	if (t1 == t2) {										//== operator, whan trees is empty
+	if (t1 == t2) {														//== operator, whan trees is empty
 		std::cout << "\nt1 == t2";
 	}
 	else {
 		std::cout << "\nt1 != t2";
 	}
-	if (t1 != t2) {										//!= operator, whan trees is empty
+	if (t1 != t2) {														//!= operator, whan trees is empty
 		std::cout << "\nt1 != t2";
 	}
 	else {
@@ -82,10 +79,9 @@ int main() {
 	t1.insert('A');
 	t2.insert('B');
 	std::cout << "\nt1 -> ";
-
 	std::cout << t1;
 	std::cout << "\nt2 -> " << t2 << "\n";
-	t1 = t2;														//assignment
+	t1 = t2;															//assignment
 	std::cout << "\nt1 -> " << t1 << "\n";
 	AVLTree<int> a;
 	std::cout << "Maximum: " << a.findMax();
@@ -95,7 +91,7 @@ int main() {
 	AVLTree<int> k;
 	k.insert(1000);
 	std::cout << "k -> " << k << "\n";									// k -> 1000  /  avl -> 4,7,8,11,12,13,14,16,17,19,20,53,60
-	k += avl;														// k -> k + avl
+	k += avl;															// k -> k + avl
 	std::cout << "\n";
 	std::cout << "k -> " << k;											// k ->  4 7 8 11 12 13 14 16 17 19 20 53 60 1000
 	std::cout << "\n--------------------------------\n";
@@ -104,11 +100,9 @@ int main() {
 	//o = avl + k;
 	//std::cout << o;
 	//std :: cout << "\n--------------------------------\n";
-
-	//AVLTree<int> ee{ 4, 5 };								//can declare tree, using initializer_list.
-	//std :: cout << ee;									//error(...)
+	//AVLTree<int> ee{ 4, 5 };											//only can declare tree, using initializer_list.
+	//std :: cout << ee;												//error(...)
 	*/
-
     /*
 	AVLTree<char>r,r1;
 	r.insert('a');
@@ -116,12 +110,11 @@ int main() {
 	r.insert('v');
 	r1.insert('5');
 	r1.insert('6');
-	r1.printInorder();			//r1-> 5,6
+	r1.printInorder();													//r1-> 5,6
 	std :: cout << "\n";		
 	r1 += r;					
-	r1.printInorder();			//r1->5,6,a,b,v
+	r1.printInorder();													//r1->5,6,a,b,v
 	*/
-
 	/*
 	AVLTree<int> a, b;
 	a.insert(5);
@@ -131,7 +124,7 @@ int main() {
 	//AVLTree<int>c;
 	//c = a + b;											
 	//c.printInorder();
-	AVLTree<int> k = k.merging(a, b);						
+	AVLTree<int> k = k.merge(a, b);						
 	k.printInorder();
 	std::cout << "\n";
 	k.printLevelorderIterative();
