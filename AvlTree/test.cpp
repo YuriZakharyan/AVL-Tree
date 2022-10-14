@@ -129,4 +129,11 @@ int main() {
 	std::cout << "\n";
 	k.printLevelorderIterative();
 	*/
+	AVLTree<int>a, b;
+	a.insert(5);
+	a.insert(7);
+	b.insert(100);
+	AVLTree<int> c = a + b;
+	std::cout << c;
+
 }

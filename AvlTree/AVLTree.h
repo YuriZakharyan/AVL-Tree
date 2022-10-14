@@ -45,7 +45,8 @@ public:
 	AVLTree& operator+=(const AVLTree&);
 	friend std::ostream& operator<<(std::ostream& stream, const AVLTree<T>& tree)
 	{
-		tree.printInorder();
+		stream << "\n";
+		tree.printLevelorderIterative();
 		return stream; 
 	};
 private:
