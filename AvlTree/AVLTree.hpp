@@ -21,7 +21,7 @@ AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 }
 template <class T>
 AVLTree<T>::AVLTree(std::initializer_list<T> newList) :root(nullptr) {	//not fully implemented
-	for (auto i = newList.begin; i != newList.end; i++) {
+	for (auto i = newList.begin; i <= newList.end; i++) {
 		insert(i, root);
 		ListHelper(root);
 	}

@@ -129,12 +129,14 @@ int main() {
 	std::cout << "\n";
 	k.printLevelorderIterative();
 	*/
-	/*
+	
 	AVLTree<int>a, b;
 	a.insert(5);
 	a.insert(7);
 	b.insert(100);
-	AVLTree<int> c = a + b;
-	std::cout << c;
-	*/
+	//AVLTree<int> c = a + b;
+	//std::cout << c;
+	
+AVLTree<int> k = k.merge(a, b);
+k.printInorder();
 }
