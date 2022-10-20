@@ -1,125 +1,139 @@
 #include "AVLTree.h"
 #include <iostream>
 #include <queue>
+
+
 template <class T>
-AVLNode<T> ::AVLNode(const T value) : _data(value),	_left(nullptr),	_right(nullptr) {}
-template <class T>
-AVLNode<T>::~AVLNode() {}
-template <class T>
-AVLTree<T>::AVLTree() :	count(0), root(nullptr) {}
-template<class T>
-AVLTree<T>::AVLTree(AVLNode<T>* newRoot) : root(newRoot) {}
+AVLTree<T>::AVLTree(const AVLTree<T>& ob) {
+	root = copy(ob.root);
+}
+
 template <class T>
 AVLTree<T>::~AVLTree() {
 	clear();
 }
+
 template <class T>
 AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 {
 	root = tree.root;
 	tree.root = nullptr;
 }
+
 template <class T>
-AVLTree<T>::AVLTree(std::initializer_list<T> newList) :root(nullptr) {	//not fully implemented
-	for (auto i = newList.begin; i <= newList.end; i++) {
-		insert(i, root);
-		ListHelper(root);
+AVLTree<T>::AVLTree(std::initializer_list<T> newList) :root(nullptr) {	
+	for (auto i = newList.begin; i != newList.end; i++) {
+		insert(newList[i], root);
+		list(root);
 	}
 }
+
 template <class T>
-void AVLTree<T> ::ListHelper(AVLNode<T>*&) {
+void AVLTree<T>::list(AVLNode<T>*&) {
 	if (root) {
-		ListHelper(root->_left);
-		ListHelper(root->_right);
+		List(root->_left);
+		List(root->_right);
 	}
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::left_Rotate(AVLNode<T>*& node) {
+AVLTree<T>::AVLNode<T>*  AVLTree<T>::left_rotate(AVLNode<T>*& node) {
 	AVLNode<T>* ll = node->_left;
 	node->_left = ll->_right;
 	ll->_right = node;
 	return ll;
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::right_Rotate(AVLNode<T>*& node) {
+AVLTree<T>::AVLNode<T>* AVLTree<T>::right_rotate(AVLNode<T>*& node) {
 	AVLNode<T>* rr = node->_right;
 	node->_right = rr->_left;
 	rr->_left = node;
 	return rr;
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::leftright_Rotate(AVLNode<T>*& node) {
-	node->_left = right_Rotate(node->_left);
-	node = left_Rotate(node);
+AVLTree<T>::AVLNode<T>* AVLTree<T>::leftright_rotate(AVLNode<T>*& node) {
+	node->_left = right_rotate(node->_left);
+	node = left_rotate(node);
 	return node;
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::rightleft_Rotate(AVLNode<T>*& node) {
-	node->_right = left_Rotate(node->_right);
-	node = right_Rotate(node);
+AVLTree<T>::AVLNode<T>* AVLTree<T>::rightleft_rotate(AVLNode<T>*& node) {
+	node->_right = left_rotate(node->_right);
+	node = right_rotate(node);
 	return node;
 }
+
 template <class T>
 int AVLTree<T>::height(AVLNode<T>* node) const {
-	if (!node)	return 0;
-	return returnMax(height(node->_left), height(node->_right)) + 1;
+	if (!node){
+		return 0;
+	}
+	return return_max(height(node->_left), height(node->_right)) + 1;
 }
+
 template <class T>
-int AVLTree<T>::returnMax(T a, T b) const {
+int AVLTree<T>::return_max(T a, T b) const {
 	return (a > b) ? a : b;
 }
+
 template <class T>
-int AVLTree<T>::getHeight() const {
+int AVLTree<T>::get_height() const {
 	return height(root);
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::insert(const T value, AVLNode<T>* node) {
-	if (node == nullptr) {						//find place to add a new node.
+AVLTree<T>::AVLNode<T>* AVLTree<T>::insert(const T& value, AVLNode<T>* node) {
+	if (node == nullptr) {					
 		node = new AVLNode<T>(value);
 		count++;
 	}
-	else if (value < node->_data) {				//Go to the left Subtree
+	else if (value < node->_data) {				
 		node->_left = insert(value, node->_left);
-		if (height(node->_left) - height(node->_right) == 2) {		//Balancing
+		if (height(node->_left) - height(node->_right) == 2) {
 			if (value < node->_left->_data) {
-				node = left_Rotate(node);
+				node = left_rotate(node);
 			}
 			else {
-				node = leftright_Rotate(node);
+				node = leftright_rotate(node);
 			}
 		}
 	}
-	else if (node->_data < value) {				//Go to the right Subtree
+	else if (node->_data < value) {				
 		node->_right = insert(value, node->_right);
-		if (height(node->_left) - height(node->_right) == -2) {		//Balancing
+		if (height(node->_left) - height(node->_right) == -2) {		
 			if (node->_right->_data < value) {
-				node = right_Rotate(node);
+				node = right_rotate(node);
 			}
 			else {
-				node = rightleft_Rotate(node);
+				node = rightleft_rotate(node);
 			}
 		}
 	}
 	return node;
 }
+
 template <class T>
-void AVLTree<T>::insert(const T value) {
+void AVLTree<T>::insert(const T& value) {
 	root = insert(value, root);
 	return;
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::erase(const T value, AVLNode<T>* node) {
-	if (node == nullptr) {			//If Tree is empty, return.
+AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* node) {
+	if (node == nullptr) {			
 		return node;
 	}
 	if (value < node->_data) {
 		node->_left = erase(value, node->_left);
 		if (height(node->_left) - height(node->_right) == -2) {
 			if (height(node->_right->_left) <= height(node->_right->_right)) {
-				node = right_Rotate(node);
+				node = right_rotate(node);
 			}
 			else {
-				node = rightleft_Rotate(node);
+				node = rightleft_rotate(node);
 			}
 		}
 	}
@@ -127,10 +141,10 @@ AVLNode<T>* AVLTree<T>::erase(const T value, AVLNode<T>* node) {
 		node->_right = erase(value, node->_right);
 		if (height(node->_left) - height(node->_right) == 2) {
 			if (height(node->_left->_right) <= height(node->_left->_left)) {
-				node = left_Rotate(node);
+				node = left_rotate(node);
 			}
 			else {
-				node = leftright_Rotate(node);
+				node = leftright_rotate(node);
 			}
 		}
 	}
@@ -139,10 +153,10 @@ AVLNode<T>* AVLTree<T>::erase(const T value, AVLNode<T>* node) {
 		node->_right = erase(node->_data, node->_right);
 		if (height(node->_left) - height(node->_right) == 2) {
 			if (height(node->_left->_right) <= height(node->_left->_left)) {
-				node = left_Rotate(node);
+				node = left_rotate(node);
 			}
 			else {
-				node = leftright_Rotate(node);
+				node = leftright_rotate(node);
 			}
 		}
 	}
@@ -155,71 +169,84 @@ AVLNode<T>* AVLTree<T>::erase(const T value, AVLNode<T>* node) {
 	}
 	return node;
 }
+
 template <class T>
-void AVLTree<T>::erase(const T value) {
+void AVLTree<T>::erase(const T& value) {
 	root = erase(value, root);
 }
+
 template <class T>
-T AVLTree<T>::findMin(const AVLNode<T>* node) const {
-	if (node->_left) {
-		return findMin(node->_left);
+T AVLTree<T>::find_min(const AVLNode<T>* node) const {
+	if (node->_left != nullptr) {
+		return find_min(node->_left);
 	}
 	return node->_data;
 }
+
 template <class T>
-T AVLTree<T>::findMin() const {
-	if (root) {
-		return findMin(root);
+T AVLTree<T>::find_min() const {
+	if (root != nullptr) {
+		return find_min(root);
 	}
 	else {
-		std :: cout << "Your Tree is Empty\n";
+		std::cout << "Tree is Empty\n";
 		return -1;
 	}
 }
+
 template <class T>
-T AVLTree<T>::findMax(const AVLNode<T>* node) const {
-	if (node->_right) {
-		return findMax(node->_right);
+T AVLTree<T>::find_max(const AVLNode<T>* node) const {
+	if (node->_right != nullptr) {
+		return find_max(node->_right);
 	}
-	return node->_data;
+	return -1;
 }
+
 template <class T>
-T AVLTree<T>::findMax() const {
-	if (root) {
-		return findMax(root);
+T AVLTree<T>::find_max() const {
+	if (root != nullptr) {
+		return find_max(root);
 	}
 	else {
-		std :: cout << "Tree is empty\n";
+		std::cout << "Tree is Empty\n";
 		return -1;
 	}
 }
+
 template <class T>
-size_t AVLTree<T>::getNumOfNodes() const {
+size_t AVLTree<T>::get_num_of_nodes() const {
 	return count;
 }
+
 template <class T>
 void AVLTree<T>::find(T value) const {
-	if (!isContain(value)) {
+	if (!is_contain(value)) {
 		std::cout << "We cannot find " << value << "\n";
 	}
 	else {
 		std::cout << "We find " << value << "\n";
 	}
 }
+
 template <class T>
-bool AVLTree<T>::isEmpty() const {
+bool AVLTree<T>::is_empty() const {
 	return count == 0;
 }
+
 template <class T>
-int AVLTree<T>::getBalance() const {
-	if (root->_left == nullptr && root->_right == nullptr)
+int AVLTree<T>::get_balance() const {
+	if (root->_left == nullptr && root->_right == nullptr) {
 		return 0;
-	if (root->_left == nullptr)
+	}
+	if (root->_left == nullptr) {
 		return (-1) * height(root->_right);
-	if (root->_right == nullptr)
+	}
+	if (root->_right == nullptr) {
 		return height(root->_left);
+	}
 	return height(root->_left) - height(root->_right);
 }
+
 template <class T>
 bool AVLTree<T>::contain(const T value, const AVLNode<T>* node) const {
 	if (node) {
@@ -233,14 +260,17 @@ bool AVLTree<T>::contain(const T value, const AVLNode<T>* node) const {
 	}
 	return false;
 }
+
 template <class T>
-bool AVLTree<T>::isContain(const T value) const {
+bool AVLTree<T>::is_contain(const T value) const {
 	return contain(value, root);
 }
+
 template <class T>
-int AVLTree<T>::getRootData() const {
+int AVLTree<T>::get_root_data() const {
 	return root->_data;
 }
+
 template <class T>
 void AVLTree<T>::clear(AVLNode<T>*& node) {
 	if (node != nullptr) {
@@ -251,56 +281,70 @@ void AVLTree<T>::clear(AVLNode<T>*& node) {
 		count--;
 	}
 }
+
 template <class T>
 void AVLTree<T>::clear() {
 	clear(root);
 	root = nullptr;
 }
+
 template <class T>
-void AVLTree<T>::printPreorder() const {
+void AVLTree<T>::print_preorder() const {
 	if (root) {
-		printPreorder(root);
+		print_preorder(root);
 	}
 }
+
 template <class T>
-void AVLTree<T>::printPreorder(AVLNode<T>* node) const {
+void AVLTree<T>::print_preorder(AVLNode<T>* node) const {
 	std::cout << node->_data << " ";
 	if (node->_left) {
-		printPreorder(node->_left);
+		print_preorder(node->_left);
 	}
 	if (node->_right) {
-		printPreorder(node->_right);
+		print_preorder(node->_right);
 	}
 }
+
 template <class T>
-void AVLTree<T>::printInorder() const {
+void AVLTree<T>::print_inorder() const {
 	if (root) {
-		printInorder(root);
+		print_inorder(root);
 	}
 }
+
 template <class T>
-void AVLTree<T>::printInorder(AVLNode<T>* node) const {
-	if (node == nullptr) return;
-	printInorder(node->_left);
+void AVLTree<T>::print_inorder(AVLNode<T>* node) const {
+	if (node == nullptr) {
+		return;
+	}
+	print_inorder(node->_left);
 	std::cout << node->_data << " ";
-	printInorder(node->_right);
+	print_inorder(node->_right);
 }
+
 template <class T>
-void AVLTree<T>::printPostorder() const {
+void AVLTree<T>::print_postorder() const {
 	if (root) {
-		printPostorder(root);
+		print_postorder(root);
 	}
 }
+
 template <class T>
-void AVLTree<T>::printPostorder(AVLNode<T>* node) const {
-	if (node == nullptr) return;
-	printPostorder(node->_left);
-	printPostorder(node->_right);
+void AVLTree<T>::print_postorder(AVLNode<T>* node) const {
+	if (node == nullptr) { 
+		return;
+	}
+	print_postorder(node->_left);
+	print_postorder(node->_right);
 	std::cout << node->_data << " ";
 }
+
 template <class T>
-void AVLTree<T>::printLevelorderIterative() const {
-	if (root == nullptr) return;
+void AVLTree<T>::print_levelorder_iterative() const {
+	if (root == nullptr) {
+		return;
+	}
 	std::queue<AVLNode<T>*> q;
 	AVLNode<T>* current;
 	q.push(root);
@@ -323,23 +367,27 @@ void AVLTree<T>::printLevelorderIterative() const {
 		}
 	}
 }
+
 template <class T>
-void AVLTree<T>::printLevelorder() const {
+void AVLTree<T>::print_levelorder() const {
 	AVLNode<T>* r = root;
 	int h = height(r);
 	for (int i = 1; i <= h; i++) {
-		printLevelOrder(root, i);
+		print_levelorder(root, i);
 	}
 }
+
 template <class T>
-void AVLTree<T>::printLevelOrder(AVLNode<T>* root, int level) const {
-	if (root == nullptr)
+void AVLTree<T>::print_levelorder(AVLNode<T>* root, int level) const {
+	if (root == nullptr) {
 		return;
-	if (level == 1)
+	}
+	if (level == 1) {
 		std::cout << root->_data << " ";
+	}
 	else if (level > 1) {
-		printLevelOrder(root->_left, level - 1);
-		printLevelOrder(root->_right, level - 1);
+		print_levelorder(root->_left, level - 1);
+		print_levelorder(root->_right, level - 1);
 	}
 }
 ///template <class T>
@@ -355,12 +403,14 @@ void AVLTree<T>::printLevelOrder(AVLNode<T>* root, int level) const {
 ///	t1.mergeHelper(t2.root);
 ///	return t1;
 ///}
+
 template <class T>
 AVLTree<T> AVLTree<T>::merge(AVLTree<T>& t1, AVLTree<T>& t2) {
 	AVLTree<T> t;
 	t = t1 + t2;
 	return t;
 }
+
 template <class T>
 bool AVLTree<T>::compare(AVLNode<T>* root1, AVLNode<T>* root2) const {
 	if (root1 == nullptr && root2 == nullptr) {
@@ -372,6 +422,7 @@ bool AVLTree<T>::compare(AVLNode<T>* root1, AVLNode<T>* root2) const {
 	}
 	return false;
 }
+
 template <class T>
 bool AVLTree<T>::operator==(const AVLTree<T>& other) const {
 	if (height(root) != height(other.root)) {
@@ -381,10 +432,12 @@ bool AVLTree<T>::operator==(const AVLTree<T>& other) const {
 		return compare(root, other.root);
 	}
 }
+
 template <class T>
 bool AVLTree<T>::operator!=(const AVLTree<T>& other) const {
 	return !(root == other.root);
 }
+
 template <class T>
 AVLTree<T>& AVLTree<T>::operator=(const AVLTree<T>& tree) {
 	if (this == &tree) {
@@ -397,8 +450,9 @@ AVLTree<T>& AVLTree<T>::operator=(const AVLTree<T>& tree) {
 	root = copy(tree.root);
 	return *this;
 }
+
 template <class T>
-AVLNode<T>* AVLTree<T>::copy(AVLNode<T>* original) const {
+AVLTree<T>::AVLNode<T>* AVLTree<T>::copy(AVLNode<T>* original) const {
 	if (original == nullptr) {
 		return nullptr;
 	}
@@ -409,6 +463,7 @@ AVLNode<T>* AVLTree<T>::copy(AVLNode<T>* original) const {
 		return node;
 	}
 }
+
 template <class T>
 AVLTree<T>& AVLTree<T>::operator=(AVLTree<T>&& tree) {
 	if (root != nullptr) {
@@ -419,27 +474,58 @@ AVLTree<T>& AVLTree<T>::operator=(AVLTree<T>&& tree) {
 	tree.root = nullptr;
 	return *this;
 }
+
 template <class T>
 AVLTree<T> AVLTree<T>::operator+(const AVLTree<T>& tree) {
-		AVLTree<T> t = root;	//*this
+		AVLTree<T> t = *this;
 		t += tree;
 		return t;
 }
+
 template <class T>
 AVLTree<T>& AVLTree<T>::operator+=(const AVLTree<T>& tree) {
 	if (*this == tree) {
-		insertHelper(tree.root);
+		insert(tree.root);
 	}
 	else {
-		insertHelper(tree.root);
+		insert(tree.root);
 	}
 	return *this;
 }
+
 template<class T>
-void AVLTree<T>::insertHelper(AVLNode<T>* node) {
+void AVLTree<T>::insert(AVLNode<T>* node) {
 	if (node != nullptr) {
 		insert(node->_data);
-		insertHelper(node->_left);
-		insertHelper(node->_right);
+		insert(node->_left);
+		insert(node->_right);
 	}
 }
+
+template <class T>
+AVLTree<T>::AVLNode<T>* AVLTree<T>::balanced(AVLNode<T>*& node) {
+	int bal_factor = balance(node);
+
+	if (balance(node->_left) > 0 && bal_factor >= 2 && node != nullptr) {
+		left_rotate(node);
+	}
+	else {
+		leftright_rotate(node);
+	}
+	if (balance(node->_right) < 0 && bal_factor <= 2 && node != nullptr) {
+		right_rotate(node);
+	}
+	else {
+		rightleft_rotate(node);
+	}
+	return node;
+}
+
+template <class T>
+int AVLTree<T>::balance(AVLNode<T>* node) {
+	if (root != nullptr) {
+		return height(root->_left) - height(root->_right);
+	}
+	return -1;
+}
+

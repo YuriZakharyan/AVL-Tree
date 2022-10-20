@@ -1,41 +1,50 @@
 #include <iostream>
-template <class T>
-class AVLNode {
-public:
-	AVLNode(const T elem);
-	~AVLNode();
-	T _data;
-	AVLNode<T>* _left;
-	AVLNode<T>* _right;
-};
+
 template <class T>
 class AVLTree {
+
+private:
+	template <class T>
+	struct AVLNode {
+	public:
+		AVLNode(const T value) : _data(value), _left(nullptr), _right(nullptr) {}
+		~AVLNode() {};
+	public:
+		T _data;
+		AVLNode<T>* _left;
+		AVLNode<T>* _right;
+	};
+
 public:
-	AVLTree();
-	AVLTree(AVLTree<T>&&);
-	AVLTree(std::initializer_list<T>);
-	AVLTree(AVLNode<T>*);
-	~AVLTree();
-	void insert(const T);
+	AVLTree() : count(0), root(nullptr) {}				
+	AVLTree(AVLTree<T>&&);					
+	AVLTree(std::initializer_list<T>);		
+	AVLTree(const AVLTree<T>&);				
+	AVLTree(AVLNode<T>* newRoot) : root(newRoot) {}
+	~AVLTree();								
+
+public:
+	void insert(const T&);				
+	void erase(const T&);
 	void clear();
-	int getHeight()const;
-	void erase(const T);
-	void printPreorder()const;
-	void printInorder()const;
-	void printPostorder()const;
-	void printLevelorder()const;
-	void printLevelorderIterative()const;
-	bool isContain(const T)const;
+	bool is_empty()const;
+	bool is_contain(const T)const;
+	int get_height()const;
+	int get_root_data()const;
+	int get_balance()const;
+	size_t get_num_of_nodes()const;
+	void print_preorder()const;
+	void print_inorder()const;
+	void print_postorder()const;
+	void print_levelorder()const;
+	void print_levelorder_iterative()const;
 	void find(T)const;
-	bool isEmpty()const;
-	int getRootData()const;
-	int getBalance()const;
-	int returnMax(T, T)const;
-	T findMin()const;
-	T findMax()const;
-	size_t getNumOfNodes()const;
+	T find_min()const;
+	T find_max()const;
+	int return_max(T, T)const;
 	//AVLTree<T> mergeTrees(AVLTree<T>&, AVLTree<T>&);
 	AVLTree<T> merge(AVLTree<T>&, AVLTree<T>&);
+
 public:
 	bool operator==(const AVLTree<T>&)const;
 	bool operator!=(const AVLTree<T>&)const;
@@ -46,30 +55,34 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, const AVLTree<T>& tree)
 	{
 		stream << "\n";
-		tree.printLevelorderIterative();
+		tree.print_levelorder_iterative();
 		return stream; 
 	};
+
 private:
 	unsigned count;
 	AVLNode<T>* root;
-	AVLNode<T>* insert(const T, AVLNode<T>*);
-	AVLNode<T>* left_Rotate(AVLNode<T>*&);
-	AVLNode<T>* right_Rotate(AVLNode<T>*&);
-	AVLNode<T>* leftright_Rotate(AVLNode<T>*&);
-	AVLNode<T>* rightleft_Rotate(AVLNode<T>*&);
-	AVLNode<T>* erase(const T, AVLNode<T>*);
+private:
+	AVLNode<T>* insert(const T&, AVLNode<T>*);
+	AVLNode<T>* erase(const T&, AVLNode<T>*);
+	AVLNode<T>* left_rotate(AVLNode<T>*&);
+	AVLNode<T>* right_rotate(AVLNode<T>*&);
+	AVLNode<T>* leftright_rotate(AVLNode<T>*&);
+	AVLNode<T>* rightleft_rotate(AVLNode<T>*&);
 	AVLNode<T>* copy(AVLNode<T>*)const;
 	int height(AVLNode<T>*) const;
 	void clear(AVLNode<T>*&);
-	void printPreorder(AVLNode<T>*)const;
-	void printInorder(AVLNode<T>*)const;
-	void printPostorder(AVLNode<T>*)const;
-	void printLevelOrder(AVLNode<T>*, int)const;
+	void print_preorder(AVLNode<T>*)const;
+	void print_inorder(AVLNode<T>*)const;
+	void print_postorder(AVLNode<T>*)const;
+	void print_levelorder(AVLNode<T>*, int)const;
 	//void mergeHelper(AVLNode<T>*&);
-	void insertHelper(AVLNode<T>*);
-	bool contain(const T, const AVLNode<T>*)const;
+	void insert(AVLNode<T>*);
+	bool contain(T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;
-	void ListHelper(AVLNode<T>*&);
-	T findMin(const AVLNode<T>*)const;
-	T findMax(const AVLNode<T>*)const;
+	void list(AVLNode<T>*&);
+	AVLNode<T>* balanced(AVLNode<T>*&);
+	int balance(AVLNode<T>*);
+	T find_min(const AVLNode<T>*)const;
+	T find_max(const AVLNode<T>*)const;
 };

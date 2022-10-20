@@ -1,7 +1,7 @@
 #include <iostream>
 #include "AVLTree.hpp"
 int main() {
-	/*
+	
 	AVLTree<int> avl;	//Create AVL tree which nodes values is intager
 	avl.insert(14);		//Add new node
 	avl.insert(17);
@@ -16,7 +16,8 @@ int main() {
 	avl.insert(19);
 	avl.insert(16);
 	avl.insert(20);
-	*/
+	
+
 	/*
 								  14
 							 /    	    \
@@ -32,33 +33,34 @@ int main() {
 	std::cout << avl << "\n";
 	//avl.clear();
 	std::cout << "\nAVL tree (preorder traversal): ";
-	avl.printPreorder();
+	avl.print_preorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";
-	avl.printInorder();
+	avl.print_inorder();
 	std::cout << "\n\nAVL tree (postorder traversal): ";
-	avl.printPostorder();
+	avl.print_postorder();
 	std::cout << "\n\nAVL tree (levelorder traversal): ";
-	avl.printLevelorder();
+	avl.print_levelorder();
 	std::cout << "\n----------------------------------------------------------------------------------------";
-	std::cout << "\nRoot Data: " << avl.getRootData() << "\n";
+	std::cout << "\nRoot Data: " << avl.get_root_data() << "\n";
 	std::cout << "\n";
-	std::cout << "Height of Tree : " << avl.getHeight() << "\n";
-	std::cout << "\nNumber of Nodes : " << avl.getNumOfNodes() << "\n";
-	std::cout << "\nMinimum value in AVL Tree : " << avl.findMin() << "\n";
-	std::cout << "\nMaximum value in AVL Tree : " << avl.findMax() << "\n";
-	std::cout << "\nisContain(13) : " << (avl.isContain(13) == true ? "Yes" : "No") << "\n";
-	std::cout << "\nisContain(40) : " << (avl.isContain(40) == true ? "Yes" : "No") << "\n";
-	std::cout << "\nIsEmpty() : " << (avl.isEmpty() == true ? "Yes" : "No") << "\n";
+	std::cout << "Height of Tree : " << avl.get_height() << "\n";
+	std::cout << "\nNumber of Nodes : " << avl.get_num_of_nodes() << "\n";
+	std::cout << "\nMinimum value in AVL Tree : " << avl.find_min() << "\n";
+	std::cout << "\nMaximum value in AVL Tree : " << avl.find_max() << "\n";
+	std::cout << "\nisContain(13) : " << (avl.is_contain(13) == true ? "Yes" : "No") << "\n";
+	std::cout << "\nisContain(40) : " << (avl.is_contain(40) == true ? "Yes" : "No") << "\n";
+	std::cout << "\nIsEmpty() : " << (avl.is_empty() == true ? "Yes" : "No") << "\n";
 	std::cout << "\nfind(150) : ";
 	avl.find(150);
 	std::cout << "\nfind(8) : ";
 	avl.find(8);
-	std::cout << "\nTree Balance Factor is : " << avl.getBalance();
+	std::cout << "\nTree Balance Factor is : " << avl.get_balance();
 	std::cout << "\n\nLevelOrder Traversal(Iterative): \n";
-	avl.printLevelorderIterative();
+	avl.print_levelorder_iterative();
 	std::cout << "\n";
-	*/
-	/*
+	
+
+	
 	AVLTree<char> t1;
 	AVLTree<char> t2;
 	if (t1 == t2) {														//== operator, whan trees is empty
@@ -84,7 +86,7 @@ int main() {
 	t1 = t2;															//assignment
 	std::cout << "\nt1 -> " << t1 << "\n";
 	AVLTree<int> a;
-	std::cout << "Maximum: " << a.findMax();
+	std::cout << "Maximum: " << a.find_max();
 	std::cout << "\n--------------------------------\n";
 	std::cout << "avl -> ";
 	std::cout << avl << "\n";
@@ -97,12 +99,13 @@ int main() {
 	std::cout << "\n--------------------------------\n";
 	AVLTree<int>n;
 	AVLTree<int>o;
+	*/
 	//o = avl + k;
 	//std::cout << o;
-	//std :: cout << "\n--------------------------------\n";
+	//std::cout << "\n--------------------------------\n";
 	//AVLTree<int> ee{ 4, 5 };											//only can declare tree, using initializer_list.
-	//std :: cout << ee;												//error(...)
-	*/
+	//std::cout << ee;												//error(...)
+	
     /*
 	AVLTree<char>r,r1;
 	r.insert('a');
@@ -110,10 +113,10 @@ int main() {
 	r.insert('v');
 	r1.insert('5');
 	r1.insert('6');
-	r1.printInorder();													//r1-> 5,6
-	std :: cout << "\n";		
+	r1.print_inorder();													//r1-> 5,6
+	std::cout << "\n";		
 	r1 += r;					
-	r1.printInorder();													//r1->5,6,a,b,v
+	r1.print_inorder();													//r1->5,6,a,b,v
 	*/
 	/*
 	AVLTree<int> a, b;
@@ -125,18 +128,20 @@ int main() {
 	//c = a + b;											
 	//c.printInorder();
 	AVLTree<int> k = k.merge(a, b);						
-	k.printInorder();
+	k.print_inorder();
 	std::cout << "\n";
-	k.printLevelorderIterative();
+	k.print_levelorder_iterative();
 	*/
 	
 	AVLTree<int>a, b;
 	a.insert(5);
 	a.insert(7);
 	b.insert(100);
-	//AVLTree<int> c = a + b;
-	//std::cout << c;
+	AVLTree<int> c = a + b;
+	std::cout << c;
 	
-AVLTree<int> k = k.merge(a, b);
-k.printInorder();
+	//AVLTree<int> k = k.merge(a, b);
+	//k.print_inorder();
+	
+	
 }
