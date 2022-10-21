@@ -1,11 +1,9 @@
 #ifndef _AVLTREE_
 #define _AVLTREE_
-
 #include <iostream>
 
 template <class T>
 class AVLTree {
-
 private:
 	template <class T>
 	struct AVLNode {
@@ -82,8 +80,11 @@ private:
 	void insert(AVLNode<T>*);
 	bool contain(T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;
-	AVLNode<T>* balanced(AVLNode<T>*&);
+	void balanced(AVLNode<T>*&, const T&);
 	int balance(AVLNode<T>*);
+	T min(const AVLNode<T>*)const;
+	T max(const AVLNode<T>*)const;
+	
 };
 
 #endif // !_AVLTREE_

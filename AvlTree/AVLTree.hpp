@@ -21,14 +21,13 @@ AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 
 template <class T>
 AVLTree<T>::AVLTree(std::initializer_list<T> newList) : root(nullptr) {	
-	for (auto i = newList.begin; i != newList.end; i++) {
-		insert(i, root);
-		//list(root);
+	for (auto i = newList.begin(); i <= newList.end(); i++) {
+		insert(*i, root);
 	}
 }
 
 template <class T>
-AVLTree<T>::AVLNode<T>*  AVLTree<T>::left_rotate(AVLNode<T>*& node) {
+AVLTree<T>::AVLNode<T>* AVLTree<T>::left_rotate(AVLNode<T>*& node) {
 	AVLNode<T>* ll = node->_left;
 	node->_left = ll->_right;
 	ll->_right = node;
@@ -83,26 +82,11 @@ AVLTree<T>::AVLNode<T>* AVLTree<T>::insert(const T& value, AVLNode<T>* &node) {
 	}
 	else if (value < node->_data) {				
 		node->_left = insert(value, node->_left);
-		if (height(node->_left) - height(node->_right) == 2) {
-			if (value < node->_left->_data) {
-				node = left_rotate(node);
-			}
-			else {
-				node = leftright_rotate(node);
-			}
-		}
 	}
 	else if (node->_data < value) {				
 		node->_right = insert(value, node->_right);
-		if (height(node->_left) - height(node->_right) == -2) {		
-			if (node->_right->_data < value) {
-				node = right_rotate(node);
-			}
-			else {
-				node = rightleft_rotate(node);
-			}
-		}
-	}
+	}	
+	balanced(node, value);
 	return node;
 }
 
@@ -119,37 +103,16 @@ AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* &node) {
 	}
 	if (value < node->_data) {
 		node->_left = erase(value, node->_left);
-		if (height(node->_left) - height(node->_right) == -2) {
-			if (height(node->_right->_left) <= height(node->_right->_right)) {
-				node = right_rotate(node);
-			}
-			else {
-				node = rightleft_rotate(node);
-			}
-		}
+		balanced(node, value);
 	}
 	else if (node->_data < value) {
 		node->_right = erase(value, node->_right);
-		if (height(node->_left) - height(node->_right) == 2) {
-			if (height(node->_left->_right) <= height(node->_left->_left)) {
-				node = left_rotate(node);
-			}
-			else {
-				node = leftright_rotate(node);
-			}
-		}
+		balanced(node, value);
 	}
 	else if (node->_left && node->_right) {
-		node->_data = find_min(node->_right);
+		node->_data = min(node->_right);
 		node->_right = erase(node->_data, node->_right);
-		if (height(node->_left) - height(node->_right) == 2) {
-			if (height(node->_left->_right) <= height(node->_left->_left)) {
-				node = left_rotate(node);
-			}
-			else {
-				node = leftright_rotate(node);
-			}
-		}
+		balanced(node, value);
 	}
 	else {
 		AVLNode<T>* old_node = node;
@@ -165,7 +128,6 @@ template <class T>
 void AVLTree<T>::erase(const T& value) {
 	root = erase(value, root);
 }
-
 
 template <class T>
 T AVLTree<T>::find_min() const {
@@ -477,22 +439,23 @@ void AVLTree<T>::insert(AVLNode<T>* node) {
 }
 
 template <class T>
-AVLTree<T>::AVLNode<T>* AVLTree<T>::balanced(AVLNode<T>*& node) {
-	
-	int bal_factor = balance(node);
-	if (balance(node->_left) > 0 && bal_factor >= 2 && node != nullptr) {
-		left_rotate(node);
+void AVLTree<T>::balanced(AVLNode<T>*& node, const T& value) {
+	if (height(node->_left) - height(node->_right) == 2) {
+		if (value < node->_left->_data) {
+			node = left_rotate(node);
+		}
+		else {
+			node = leftright_rotate(node);
+		}
 	}
-	else {
-		leftright_rotate(node);
+	if (height(node->_left) - height(node->_right) == -2) {
+		if (node->_right->_data < value) {
+			node = right_rotate(node);
+		}
+		else {
+			node = rightleft_rotate(node);
+		}
 	}
-	if (balance(node->_right) < 0 && bal_factor <= 2 && node != nullptr) {
-		right_rotate(node);
-	}
-	else {
-		rightleft_rotate(node);
-	}
-	return node;
 }
 
 template <class T>
@@ -503,3 +466,18 @@ int AVLTree<T>::balance(AVLNode<T>* node) {
 	return -1;
 }
 
+template <class T>
+T AVLTree<T>::min(const AVLNode<T>* node) const {
+	if (node->_left != nullptr) {
+		return min(node->_left);
+	}
+	return node->_data;
+}
+
+template <class T>
+T AVLTree<T>::max(const AVLNode<T>* node) const {
+	if (node->_right != nullptr) {
+		return max(node->_right);
+	}
+	return node->_data;
+}

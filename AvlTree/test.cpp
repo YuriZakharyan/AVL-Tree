@@ -18,7 +18,6 @@ int main() {
 	avl.insert(16);
 	avl.insert(20);
 	//avl.erase(20);
-	//avl.clear();
 	
 	//std::cout << avl.find_max() << std::endl;
 	//std::cout << avl.find_min() << std::endl;
@@ -33,7 +32,7 @@ int main() {
 				  4     8      13   16        20  60
 
 	*/
-	
+	/*
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
 	//avl.clear();
@@ -64,9 +63,9 @@ int main() {
 	std::cout << "\n\nLevelOrder Traversal(Iterative): \n";
 	avl.print_levelorder_iterative();
 	std::cout << "\n";
-	
+	*/
 
-	
+	/*
 	AVLTree<char> t1;
 	AVLTree<char> t2;
 	if (t1 == t2) {														
@@ -81,36 +80,8 @@ int main() {
 	else {
 		std::cout << "\nt1 == t2";
 	}
+	*/
 	
-	
-	t1.insert('H');
-	t1.insert('A');
-	t2.insert('B');
-	std::cout << "\nt1 -> ";
-	std::cout << t1;
-	std::cout << "\nt2 -> " << t2 << "\n";
-	t1 = t2;									
-	std::cout << "\nt1 -> " << t1 << "\n";
-	AVLTree<int> a;
-	std::cout << "Maximum: " << a.find_max();
-	std::cout << "\n--------------------------------\n";
-	std::cout << "avl -> ";
-	std::cout << avl << "\n";
-	AVLTree<int> k;
-	k.insert(1000);
-	std::cout << "k -> " << k << "\n";									
-	k += avl;															
-	std::cout << "\n";
-	std::cout << "k -> " << k;											
-	std::cout << "\n--------------------------------\n";
-	AVLTree<int>n;
-	AVLTree<int>o;
-	
-	//o = avl + k;
-	//std::cout << o;
-	//std::cout << "\n--------------------------------\n";
-	//AVLTree<int> ee{ 4, 5 };											
-	//std::cout << ee;	
 	
     /*
 	AVLTree<char>r,r1;
@@ -170,7 +141,14 @@ int main() {
 	std::cout << k << std::endl;
 	*/
 
-	/*AVLTree<int> p = { 5,6,8 };
+	/*
+	AVLTree<int> p = { 5,6,8 };
 	p.print_inorder();
 	*/
+
+	
+	AVLTree<int> d;
+	d = AVLTree<int>{ 6,7,5,1,10,59,0};
+	std::cout<<d;
+	
 }
