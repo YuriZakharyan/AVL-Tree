@@ -1,9 +1,10 @@
 #include <iostream>
 #include "AVLTree.hpp"
+//#include "AVLTree.h"
 int main() {
 	
-	AVLTree<int> avl;	//Create AVL tree which nodes values is intager
-	avl.insert(14);		//Add new node
+	AVLTree<int> avl;	
+	avl.insert(14);		
 	avl.insert(17);
 	avl.insert(11);
 	avl.insert(7);
@@ -16,7 +17,11 @@ int main() {
 	avl.insert(19);
 	avl.insert(16);
 	avl.insert(20);
+	//avl.erase(20);
+	//avl.clear();
 	
+	//std::cout << avl.find_max() << std::endl;
+	//std::cout << avl.find_min() << std::endl;
 
 	/*
 								  14
@@ -28,10 +33,11 @@ int main() {
 				  4     8      13   16        20  60
 
 	*/
-	/*
+	
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
 	//avl.clear();
+	
 	std::cout << "\nAVL tree (preorder traversal): ";
 	avl.print_preorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";
@@ -63,27 +69,27 @@ int main() {
 	
 	AVLTree<char> t1;
 	AVLTree<char> t2;
-	if (t1 == t2) {														//== operator, whan trees is empty
+	if (t1 == t2) {														
 		std::cout << "\nt1 == t2";
 	}
 	else {
 		std::cout << "\nt1 != t2";
 	}
-	if (t1 != t2) {														//!= operator, whan trees is empty
+	if (t1 != t2) {														
 		std::cout << "\nt1 != t2";
 	}
 	else {
 		std::cout << "\nt1 == t2";
 	}
-	*/
-	/*
+	
+	
 	t1.insert('H');
 	t1.insert('A');
 	t2.insert('B');
 	std::cout << "\nt1 -> ";
 	std::cout << t1;
 	std::cout << "\nt2 -> " << t2 << "\n";
-	t1 = t2;															//assignment
+	t1 = t2;									
 	std::cout << "\nt1 -> " << t1 << "\n";
 	AVLTree<int> a;
 	std::cout << "Maximum: " << a.find_max();
@@ -92,19 +98,19 @@ int main() {
 	std::cout << avl << "\n";
 	AVLTree<int> k;
 	k.insert(1000);
-	std::cout << "k -> " << k << "\n";									// k -> 1000  /  avl -> 4,7,8,11,12,13,14,16,17,19,20,53,60
-	k += avl;															// k -> k + avl
+	std::cout << "k -> " << k << "\n";									
+	k += avl;															
 	std::cout << "\n";
-	std::cout << "k -> " << k;											// k ->  4 7 8 11 12 13 14 16 17 19 20 53 60 1000
+	std::cout << "k -> " << k;											
 	std::cout << "\n--------------------------------\n";
 	AVLTree<int>n;
 	AVLTree<int>o;
-	*/
+	
 	//o = avl + k;
 	//std::cout << o;
 	//std::cout << "\n--------------------------------\n";
-	//AVLTree<int> ee{ 4, 5 };											//only can declare tree, using initializer_list.
-	//std::cout << ee;												//error(...)
+	//AVLTree<int> ee{ 4, 5 };											
+	//std::cout << ee;	
 	
     /*
 	AVLTree<char>r,r1;
@@ -113,10 +119,10 @@ int main() {
 	r.insert('v');
 	r1.insert('5');
 	r1.insert('6');
-	r1.print_inorder();													//r1-> 5,6
+	r1.print_inorder();												
 	std::cout << "\n";		
 	r1 += r;					
-	r1.print_inorder();													//r1->5,6,a,b,v
+	r1.print_inorder();													
 	*/
 	/*
 	AVLTree<int> a, b;
@@ -133,15 +139,38 @@ int main() {
 	k.print_levelorder_iterative();
 	*/
 	
-	AVLTree<int>a, b;
+	/*
+	AVLTree<int>a;
+	AVLTree<int>b;
 	a.insert(5);
 	a.insert(7);
 	b.insert(100);
 	AVLTree<int> c = a + b;
-	std::cout << c;
-	
-	//AVLTree<int> k = k.merge(a, b);
-	//k.print_inorder();
-	
-	
+	std::cout << c << std::endl;
+	*/
+
+	/*
+	AVLTree<char> c1, c2;
+	c1.insert('a');
+	c1.insert('b');
+	c2.insert('c');
+	c1 = c2;
+	std::cout << c1;
+	*/
+
+	/*
+	AVLTree<int>a;
+	AVLTree<int>b;
+	a.insert(5);
+	a.insert(7);
+	std::cout << a << std::endl;
+	b.insert(100);
+	std::cout << b << std::endl;
+	AVLTree<int> k = k.merge(a, b);
+	std::cout << k << std::endl;
+	*/
+
+	/*AVLTree<int> p = { 5,6,8 };
+	p.print_inorder();
+	*/
 }

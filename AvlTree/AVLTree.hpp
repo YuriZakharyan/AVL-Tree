@@ -2,7 +2,6 @@
 #include <iostream>
 #include <queue>
 
-
 template <class T>
 AVLTree<T>::AVLTree(const AVLTree<T>& ob) {
 	root = copy(ob.root);
@@ -21,18 +20,10 @@ AVLTree<T>::AVLTree(AVLTree<T>&& tree)
 }
 
 template <class T>
-AVLTree<T>::AVLTree(std::initializer_list<T> newList) :root(nullptr) {	
+AVLTree<T>::AVLTree(std::initializer_list<T> newList) : root(nullptr) {	
 	for (auto i = newList.begin; i != newList.end; i++) {
-		insert(newList[i], root);
-		list(root);
-	}
-}
-
-template <class T>
-void AVLTree<T>::list(AVLNode<T>*&) {
-	if (root) {
-		List(root->_left);
-		List(root->_right);
+		insert(i, root);
+		//list(root);
 	}
 }
 
@@ -75,7 +66,7 @@ int AVLTree<T>::height(AVLNode<T>* node) const {
 }
 
 template <class T>
-int AVLTree<T>::return_max(T a, T b) const {
+int AVLTree<T>::return_max(int a, int b) const {
 	return (a > b) ? a : b;
 }
 
@@ -85,7 +76,7 @@ int AVLTree<T>::get_height() const {
 }
 
 template <class T>
-AVLTree<T>::AVLNode<T>* AVLTree<T>::insert(const T& value, AVLNode<T>* node) {
+AVLTree<T>::AVLNode<T>* AVLTree<T>::insert(const T& value, AVLNode<T>* &node) {
 	if (node == nullptr) {					
 		node = new AVLNode<T>(value);
 		count++;
@@ -122,7 +113,7 @@ void AVLTree<T>::insert(const T& value) {
 }
 
 template <class T>
-AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* node) {
+AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* &node) {
 	if (node == nullptr) {			
 		return node;
 	}
@@ -149,7 +140,7 @@ AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* node) {
 		}
 	}
 	else if (node->_left && node->_right) {
-		node->_data = findMin(node->_right);
+		node->_data = find_min(node->_right);
 		node->_right = erase(node->_data, node->_right);
 		if (height(node->_left) - height(node->_right) == 2) {
 			if (height(node->_left->_right) <= height(node->_left->_left)) {
@@ -161,7 +152,7 @@ AVLTree<T>::AVLNode<T>* AVLTree<T>::erase(const T& value, AVLNode<T>* node) {
 		}
 	}
 	else {
-		AVLNode* old_node = node;
+		AVLNode<T>* old_node = node;
 		node = node->_left ? node->_left : node->_right;
 		delete old_node;
 		old_node = nullptr;
@@ -175,42 +166,31 @@ void AVLTree<T>::erase(const T& value) {
 	root = erase(value, root);
 }
 
+
 template <class T>
-T AVLTree<T>::find_min(const AVLNode<T>* node) const {
-	if (node->_left != nullptr) {
-		return find_min(node->_left);
+T AVLTree<T>::find_min() const {
+	if (root == nullptr) {
+		std::cout << "Tree is Empty\n";
+		return -1;
+	}
+	AVLNode<T>* node = root;
+	while (node->_left != nullptr) {
+		node = node->_left;
 	}
 	return node->_data;
 }
 
 template <class T>
-T AVLTree<T>::find_min() const {
-	if (root != nullptr) {
-		return find_min(root);
-	}
-	else {
-		std::cout << "Tree is Empty\n";
-		return -1;
-	}
-}
-
-template <class T>
-T AVLTree<T>::find_max(const AVLNode<T>* node) const {
-	if (node->_right != nullptr) {
-		return find_max(node->_right);
-	}
-	return -1;
-}
-
-template <class T>
 T AVLTree<T>::find_max() const {
-	if (root != nullptr) {
-		return find_max(root);
-	}
-	else {
+	if (root == nullptr) {
 		std::cout << "Tree is Empty\n";
 		return -1;
 	}
+	AVLNode<T>* node = root;
+	while (node->_right != nullptr) {
+		node = node->_right;
+	}
+	return node->_data;
 }
 
 template <class T>
@@ -235,6 +215,9 @@ bool AVLTree<T>::is_empty() const {
 
 template <class T>
 int AVLTree<T>::get_balance() const {
+	if (root == nullptr) {
+		return 0;
+	}
 	if (root->_left == nullptr && root->_right == nullptr) {
 		return 0;
 	}
@@ -262,13 +245,17 @@ bool AVLTree<T>::contain(const T value, const AVLNode<T>* node) const {
 }
 
 template <class T>
-bool AVLTree<T>::is_contain(const T value) const {
+bool AVLTree<T>::is_contain(const T& value) const {
 	return contain(value, root);
 }
 
 template <class T>
 int AVLTree<T>::get_root_data() const {
-	return root->_data;
+	if (root != nullptr) {
+		return root->_data;
+	}
+	std::cout << "Tree is empty\n";
+	return -1;
 }
 
 template <class T>
@@ -390,19 +377,6 @@ void AVLTree<T>::print_levelorder(AVLNode<T>* root, int level) const {
 		print_levelorder(root->_right, level - 1);
 	}
 }
-///template <class T>
-///void AVLTree<T>::mergeHelper(AVLNode<T>*& node) {
-///	if (node != nullptr) {
-///		mergeHelper(node->_left);
-///		insert(node->_data, root);
-///		mergeHelper(node->_right);
-///	}
-///}
-///template <class T>
-///AVLTree<T> AVLTree<T>::mergeTrees(AVLTree<T>& t1, AVLTree<T>& t2) {
-///	t1.mergeHelper(t2.root);
-///	return t1;
-///}
 
 template <class T>
 AVLTree<T> AVLTree<T>::merge(AVLTree<T>& t1, AVLTree<T>& t2) {
@@ -504,8 +478,8 @@ void AVLTree<T>::insert(AVLNode<T>* node) {
 
 template <class T>
 AVLTree<T>::AVLNode<T>* AVLTree<T>::balanced(AVLNode<T>*& node) {
+	
 	int bal_factor = balance(node);
-
 	if (balance(node->_left) > 0 && bal_factor >= 2 && node != nullptr) {
 		left_rotate(node);
 	}

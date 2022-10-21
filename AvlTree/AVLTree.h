@@ -1,3 +1,6 @@
+#ifndef _AVLTREE_
+#define _AVLTREE_
+
 #include <iostream>
 
 template <class T>
@@ -21,14 +24,14 @@ public:
 	AVLTree(std::initializer_list<T>);		
 	AVLTree(const AVLTree<T>&);				
 	AVLTree(AVLNode<T>* newRoot) : root(newRoot) {}
-	~AVLTree();								
+	~AVLTree();		
 
 public:
 	void insert(const T&);				
 	void erase(const T&);
 	void clear();
 	bool is_empty()const;
-	bool is_contain(const T)const;
+	bool is_contain(const T&)const;
 	int get_height()const;
 	int get_root_data()const;
 	int get_balance()const;
@@ -41,8 +44,7 @@ public:
 	void find(T)const;
 	T find_min()const;
 	T find_max()const;
-	int return_max(T, T)const;
-	//AVLTree<T> mergeTrees(AVLTree<T>&, AVLTree<T>&);
+	int return_max(int, int)const;
 	AVLTree<T> merge(AVLTree<T>&, AVLTree<T>&);
 
 public:
@@ -62,9 +64,10 @@ public:
 private:
 	unsigned count;
 	AVLNode<T>* root;
+
 private:
-	AVLNode<T>* insert(const T&, AVLNode<T>*);
-	AVLNode<T>* erase(const T&, AVLNode<T>*);
+	AVLNode<T>* insert(const T&, AVLNode<T>*&);
+	AVLNode<T>* erase(const T&, AVLNode<T>*&);
 	AVLNode<T>* left_rotate(AVLNode<T>*&);
 	AVLNode<T>* right_rotate(AVLNode<T>*&);
 	AVLNode<T>* leftright_rotate(AVLNode<T>*&);
@@ -76,13 +79,11 @@ private:
 	void print_inorder(AVLNode<T>*)const;
 	void print_postorder(AVLNode<T>*)const;
 	void print_levelorder(AVLNode<T>*, int)const;
-	//void mergeHelper(AVLNode<T>*&);
 	void insert(AVLNode<T>*);
 	bool contain(T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;
-	void list(AVLNode<T>*&);
 	AVLNode<T>* balanced(AVLNode<T>*&);
 	int balance(AVLNode<T>*);
-	T find_min(const AVLNode<T>*)const;
-	T find_max(const AVLNode<T>*)const;
 };
+
+#endif // !_AVLTREE_
