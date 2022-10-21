@@ -1,6 +1,6 @@
 #include <iostream>
 #include "AVLTree.hpp"
-//#include "AVLTree.h"
+#include "AVLTree.h"
 int main() {
 	
 	AVLTree<int> avl;	
@@ -81,8 +81,7 @@ int main() {
 		std::cout << "\nt1 == t2";
 	}
 	*/
-	
-	
+		
     /*
 	AVLTree<char>r,r1;
 	r.insert('a');
@@ -142,13 +141,13 @@ int main() {
 	*/
 
 	/*
-	AVLTree<int> p = { 5,6,8 };
+	AVLTree<int> p = {5,6,8};
 	p.print_inorder();
 	*/
 
-	
+	/*
 	AVLTree<int> d;
-	d = AVLTree<int>{ 6,7,5,1,10,59,0};
+	d = AVLTree<int>{6,7,5,1,10,59,0};
 	std::cout<<d;
-	
+	*/
 }

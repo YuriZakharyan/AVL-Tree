@@ -42,7 +42,6 @@ public:
 	void find(T)const;
 	T find_min()const;
 	T find_max()const;
-	int return_max(int, int)const;
 	AVLTree<T> merge(AVLTree<T>&, AVLTree<T>&);
 
 public:
@@ -84,7 +83,7 @@ private:
 	int balance(AVLNode<T>*);
 	T min(const AVLNode<T>*)const;
 	T max(const AVLNode<T>*)const;
-	
+	int return_max(int, int)const;
 };
 
 #endif // !_AVLTREE_
