@@ -4,8 +4,9 @@
 ### C++ ###
 # Prerequisites
 *.d
-
-# Compiled Object files
+*.sln
+*.vcxproj
+Compiled Object files
 *.slo
 *.lo
 *.o
