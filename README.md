@@ -40,7 +40,7 @@
 ### **Insertion**
 >**_Steps to follow for insertion_**
 >>- Perform standard BST insert for w. 
->>Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be the grandchild of z that comes on the path from w to z. 
+>>- Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be the grandchild of z that comes on the path from w to z. 
 >>- Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be >>the grandchild of z that comes on the path from w to z. 
 >>- Following are the possible 4 arrangements:
 >>>- y is the left child of z and x is the left child of y (Left Left Case)  
@@ -48,5 +48,17 @@
 >>>- y is the right child of z and x is the right child of y (Right Right Case) 
 >>>- y is the right child of z and x is the left child of y (Right Left Case)
 >>>
->>>![Alt](https://miro.medium.com/max/1400/0*35JZHDSkODkDbeoP.gif)
 >>>![Alt](https://i.ytimg.com/vi/_nyt5QYel3Q/maxresdefault.jpg)
+
+### **Deletion**
+>**_Steps to follow for deletion_**
+>>Perform standard BST delete for w. 
+>>- Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the larger height child of z, and x be the larger height child of y. Note that the definitions of x and y are different from insertion here. 
+>>- Re-balance the tree by performing appropriate rotations on the subtree rooted with z. There can be 4 possible cases that needs to be handled as x, y and z can be arranged in 4 ways. 
+>>- Following are the possible 4 arrangements: 
+>>>- y is left child of z and x is left child of y (Left Left Case) 
+>>>- y is left child of z and x is right child of y (Left Right Case) 
+>>>- y is right child of z and x is right child of y (Right Right Case) 
+>>>- y is right child of z and x is left child of y (Right Left Case)
+>>>
+>>>![Alt](https://static.javatpoint.com/ds/images/deletion-in-avl-tree-r1-rotation-solution.png)
