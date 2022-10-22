@@ -42,5 +42,9 @@
 >>- Perform standard BST insert for w. 
 >>Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be the grandchild of z that comes on the path from w to z. 
 >>- Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be >>the grandchild of z that comes on the path from w to z. 
-
+>>- Following are the possible 4 arrangements:
+>>>- y is the left child of z and x is the left child of y (Left Left Case)  
+>>>- y is the left child of z and x is the right child of y (Left Right Case) 
+>>>- y is the right child of z and x is the right child of y (Right Right Case) 
+>>>- y is the right child of z and x is the left child of y (Right Left Case)
 
