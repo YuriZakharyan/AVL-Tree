@@ -48,7 +48,4 @@
 >>>- y is the right child of z and x is the right child of y (Right Right Case) 
 >>>- y is the right child of z and x is the left child of y (Right Left Case)
 
-<p align="center">
-  <img src="C:\Users\yuriz\OneDrive\Desktop\maxresdefault.jpg" width="350" title="hover text">
-  <img src="C:\Users\yuriz\OneDrive\Desktop\maxresdefault.jpg" width="350" alt="accessibility text">
-</p>
+![Alt](https://miro.medium.com/max/1400/0*35JZHDSkODkDbeoP.gif)
