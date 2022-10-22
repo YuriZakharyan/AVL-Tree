@@ -35,6 +35,8 @@ Compiled Object files
 *.exe
 *.out
 *.app
+!*AvlTree.sln
+!*AvlTree.vcxproj
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
