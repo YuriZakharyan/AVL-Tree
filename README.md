@@ -49,4 +49,4 @@
 >>>- y is the right child of z and x is the left child of y (Right Left Case)
 >>>
 >>>![Alt](https://miro.medium.com/max/1400/0*35JZHDSkODkDbeoP.gif)
-
+>>>![Alt](https://i.ytimg.com/vi/_nyt5QYel3Q/maxresdefault.jpg)
