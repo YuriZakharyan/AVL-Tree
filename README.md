@@ -37,7 +37,7 @@
  >- **Operator +**
  >- **Operator +=**
 
-###Insertion
+### **Insertion**
 >**_Steps to follow for insertion_**
 >>Perform standard BST insert for w. 
 >>Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced 
