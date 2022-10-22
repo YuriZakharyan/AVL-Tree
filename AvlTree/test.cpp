@@ -1,8 +1,8 @@
 #include <iostream>
 #include "AVLTree.hpp"
 #include "AVLTree.h"
+
 int main() {
-	
 	AVLTree<int> avl;	
 	avl.insert(14);		
 	avl.insert(17);
@@ -147,7 +147,7 @@ int main() {
 
 	/*
 	AVLTree<int> d;
-	d = AVLTree<int>{6,7,5,1,10,59,0};
+	d = AVLTree<int>{ 6,7,5,1,10,59,0 };
 	std::cout<<d;
 	*/
 }
