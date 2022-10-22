@@ -73,3 +73,6 @@
 
 > [Balance Factor Calculation](https://programmerbay.com/avl-tree-a-height-balancing-bst/)
 
+### How to use this project
+>- Clone/Download this repository 
+>- Add sourse/header files to your project
