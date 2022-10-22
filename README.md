@@ -5,7 +5,7 @@
 
 ## **Methods**
  >- **`Insert()`** - Insert element in tree (after that balansing the tree). 
- >- **`Erase()** - Insert element in tree (after that balansing the tree).
+ >- **`Erase()`** - Insert element in tree (after that balansing the tree).
  >- **`RightRotate()`**
  >- **`LeftRotate()`** 
  >- **`RightLeftRotate()`**
@@ -29,14 +29,14 @@
  >- **`Compare()`** - Comparing trees(this is a helper method).
 
 ## Operators
- >- **Copy operator assignment =**
- >- **Move operator assignment =**
- >- **Operator stream out(cout) <<**
- >- **Operator is Equal to ==**
+ >- **`Copy operator assignment =`**
+ >- **`Move operator assignment =`**
+ >- **`Operator stream out(cout)<<`**
+ >- **`Operator is Equal to ==`**
  > ...
- >- **Operator is not Equal to !=**
- >- **Operator +**
- >- **Operator +=**
+ >- **`Operator is not Equal to !=`**
+ >- **`Operator +`**
+ >- **`Operator +=`**
 
 ### **Insertion**
 >**_Steps to follow for insertion_**
