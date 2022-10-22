@@ -39,9 +39,10 @@
 
 ### **Insertion**
 >**_Steps to follow for insertion_**
->>Perform standard BST insert for w. 
+>>- Perform standard BST insert for w. 
 >>Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced 
 >>node, y be the child of z that comes on the path from w to z and x be the grandchild of z that 
 >>comes on the path from w to z. 
+>>- Starting from w, travel up and find the first unbalanced node. Let z be the first unbalanced node, y be the child of z that comes on the path from w to z and x be >>the grandchild of z that comes on the path from w to z. 
 
 
