@@ -33,6 +33,7 @@
  >- **Move operator assignment =**
  >- **Operator stream out(cout) <<**
  >- **Operator is Equal to ==**
+ > ...
  >- **Operator is not Equal to !=**
  >- **Operator +**
  >- **Operator +=**
