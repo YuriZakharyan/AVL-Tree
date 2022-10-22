@@ -61,4 +61,4 @@
 >>>- y is right child of z and x is right child of y (Right Right Case) 
 >>>- y is right child of z and x is left child of y (Right Left Case)
 >>>
->>>![Alt]([https://static.javatpoint.com/ds/images/deletion-in-avl-tree-r1-rotation-solution.png](https://media.geeksforgeeks.org/wp-content/uploads/AVL_TREE_DELETION.jpg))
+>>>![Alt](https://media.geeksforgeeks.org/wp-content/uploads/AVL_TREE_DELETION.jpg)
