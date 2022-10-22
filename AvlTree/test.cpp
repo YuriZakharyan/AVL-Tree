@@ -94,6 +94,7 @@ int main() {
 	r1 += r;					
 	r1.print_inorder();													
 	*/
+
 	/*
 	AVLTree<int> a, b;
 	a.insert(5);
@@ -141,7 +142,7 @@ int main() {
 	*/
 
 	/*
-	AVLTree<int> p = {5,6,8};
+	AVLTree<int> p = {5,6,8};	
 	p.print_inorder();
 	*/
 
