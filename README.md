@@ -62,3 +62,6 @@
 >>>- y is right child of z and x is left child of y (Right Left Case)
 >>>
 >>>![Alt](https://media.geeksforgeeks.org/wp-content/uploads/AVL_TREE_DELETION.jpg)
+
+## Useful features
+[Insertion](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
