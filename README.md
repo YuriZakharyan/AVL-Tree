@@ -38,7 +38,7 @@
  >- **Operator +**
  >- **Operator +=**
 ```diff
-### - **Insertion**
+- ### **Insertion**
 ```
 >**_Steps to follow for insertion_**
 >>- Perform standard BST insert for w. 
