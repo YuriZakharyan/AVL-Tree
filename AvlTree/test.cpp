@@ -32,11 +32,11 @@ int main() {
 				  4     8      13   16        20  60
 
 	*/
-	
+	/*
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
 	//avl.clear();
-	/*
+	
 	std::cout << "\nAVL tree (preorder traversal): ";
 	avl.print_preorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";

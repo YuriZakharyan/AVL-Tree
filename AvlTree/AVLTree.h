@@ -81,7 +81,6 @@ private:
 	bool contain(T, const AVLNode<T>*)const;
 	bool compare(AVLNode<T>*, AVLNode<T>*)const;
 	void balanced(AVLNode<T>*&, const T&);
-	int balance(AVLNode<T>*);
 	T min(const AVLNode<T>*)const;
 	T max(const AVLNode<T>*)const;
 	int return_max(int, int)const;
