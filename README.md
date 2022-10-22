@@ -65,7 +65,10 @@
 
 ## Useful features
 > [Insertion](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
+
 > [Deletion](https://www.geeksforgeeks.org/avl-tree-set-2-deletion/)
+
 > [Rotations](https://www.tutorialspoint.com/data_structures_algorithms/avl_tree_algorithm.htm)
+
 > [Balance Factor Calculation](https://programmerbay.com/avl-tree-a-height-balancing-bst/)
 
