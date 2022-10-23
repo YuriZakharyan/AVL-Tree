@@ -11,6 +11,7 @@ private:
 	public:
 		AVLNode(const T value) : _data(value), _left(nullptr), _right(nullptr) {}
 		~AVLNode() {};
+
 	public:
 		T _data;
 		AVLNode<T>* _left;
@@ -85,5 +86,4 @@ private:
 	T max(const AVLNode<T>*)const;
 	int return_max(int, int)const;
 };
-
-#endif // !_AVLTREE_
+#endif

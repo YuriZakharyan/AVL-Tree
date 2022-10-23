@@ -143,7 +143,7 @@ int main() {
 	*/
 
 	/*
-	AVLTree<int> p = {5,6,8};	
+	AVLTree<int> p = {5,6,1};
 	p.print_inorder();
 	*/
 
