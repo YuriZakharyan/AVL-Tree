@@ -1,6 +1,3 @@
-﻿// AVL.h : Include file for standard system include files,
-// or project specific include files.
-
 #pragma once
 #ifndef _AVLTREE_
 #define _AVLTREE_
@@ -91,5 +88,3 @@ private:
 	int return_max(int, int)const;
 };
 #endif
-
-// TODO: Reference additional headers your program requires here.
