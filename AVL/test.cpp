@@ -1,6 +1,3 @@
-﻿// AVL.cpp : Defines the entry point for the application.
-//
-
 #include <iostream>
 #include "AVLTree.hpp"
 #include "AVLTree.h"
@@ -39,7 +36,6 @@ int main() {
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";
 	//avl.clear();
-
 	std::cout << "\nAVL tree (preorder traversal): ";
 	avl.print_preorder();
 	std::cout << "\n\nAVL tree (inorder traversal): ";
