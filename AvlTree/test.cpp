@@ -32,6 +32,7 @@ int main() {
 				  4     8      13   16        20  60
 
 	*/
+
 	/*
 	std::cout << "Stream out operator: ";
 	std::cout << avl << "\n";

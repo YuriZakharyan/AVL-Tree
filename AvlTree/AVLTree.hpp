@@ -458,7 +458,6 @@ void AVLTree<T>::balanced(AVLNode<T>*& node, const T& value) {
 	}
 }
 
-
 template <class T>
 T AVLTree<T>::min(const AVLNode<T>* node) const {
 	if (node->_left != nullptr) {
